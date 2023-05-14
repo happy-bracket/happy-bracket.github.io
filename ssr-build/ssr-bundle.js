@@ -915,10 +915,14 @@ function Question(content) {
     case "singleLine":
       {
         choice = 'none';
+        break;
       }
     case "multiLine":
       {
-        choice = {};
+        choice = _objectSpread({}, content.responses.map(function (_) {
+          return 'none';
+        }));
+        break;
       }
   }
   return {
@@ -931,7 +935,8 @@ function State(questionnaire) {
     return [q.content.id, q];
   }));
   return {
-    questionnaire: qMap
+    questionnaire: qMap,
+    showIncompleteError: false
   };
 }
 var state = signals_core_module_u(State(QuestionnaireData.map(function (q) {
@@ -942,26 +947,40 @@ function dispatch(event) {
   switch (event.kind) {
     case 'answer':
       {
-        var question = state.value.questionnaire[event.questionId];
+        var currentState = state.value;
+        var question = currentState.questionnaire[event.questionId];
         var newQuestion = _objectSpread(_objectSpread({}, question), {}, {
           choice: event.answerIndex
         });
-        console.log(newQuestion);
-        newState = {
-          questionnaire: _objectSpread(_objectSpread({}, state.value.questionnaire), {}, _defineProperty({}, question.content.id, newQuestion))
-        };
+        newState = _objectSpread(_objectSpread({}, currentState), {}, {
+          questionnaire: _objectSpread(_objectSpread({}, currentState.questionnaire), {}, _defineProperty({}, question.content.id, newQuestion))
+        });
         break;
       }
     case 'multiLineAnswer':
       {
-        var _question = state.value.questionnaire[event.questionId];
+        var _currentState = state.value;
+        var _question = _currentState.questionnaire[event.questionId];
         var newChoice = _objectSpread(_objectSpread({}, _question.choice), {}, _defineProperty({}, event.qrIndex[0], event.qrIndex[1]));
         var _newQuestion = _objectSpread(_objectSpread({}, _question), {}, {
           choice: newChoice
         });
-        newState = {
-          questionnaire: _objectSpread(_objectSpread({}, state.value.questionnaire), {}, _defineProperty({}, _question.content.id, _newQuestion))
-        };
+        newState = _objectSpread(_objectSpread({}, _currentState), {}, {
+          questionnaire: _objectSpread(_objectSpread({}, _currentState.questionnaire), {}, _defineProperty({}, _question.content.id, _newQuestion))
+        });
+        break;
+      }
+    case 'finish':
+      {
+        var _currentState2 = state.value;
+        console.log(_currentState2.questionnaire);
+        if (Object.values(_currentState2.questionnaire).every(function (q) {
+          return q.content.kind == 'singleLine' && q.choice != 'none' || q.content.kind == 'multiLine' && Object.values(q.choice).every(function (c) {
+            return c != 'none';
+          });
+        })) newState = 'finished';else newState = _objectSpread(_objectSpread({}, _currentState2), {}, {
+          showIncompleteError: true
+        });
       }
   }
   state.value = newState;
@@ -1016,14 +1035,33 @@ function QuestionView(question) {
   }
 }
 var app_App = function App() {
-  var questionViews = Object.values(state.value.questionnaire).map(QuestionView);
-  return questionViews;
+  var currentState = state.value;
+  if (currentState == 'finished') {
+    return Object(external_preact_["h"])("h1", null, "\u0421\u043F\u0430\u0441\u0438\u0431\u043E \u0437\u0430 \u0443\u0447\u0430\u0441\u0442\u0438\u0435!");
+  } else {
+    var questionViews = Object.values(currentState.questionnaire).map(QuestionView);
+    var errorView;
+    return Object(external_preact_["h"])(external_preact_["Fragment"], null, Object(external_preact_["h"])("div", null, questionViews), Object(external_preact_["h"])("div", null, currentState.showIncompleteError && Object(external_preact_["h"])("h4", {
+      class: "incomplete-error"
+    }, "\u041F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430, \u043E\u0442\u0432\u0435\u0442\u044C\u0442\u0435 \u043D\u0430 \u0432\u0441\u0435 \u0432\u043E\u043F\u0440\u043E\u0441\u044B."), Object(external_preact_["h"])("button", {
+      class: "button-xlarge pure-button button-success button-finish",
+      onClick: function onClick() {
+        return dispatch({
+          kind: 'finish'
+        });
+      }
+    }, "\u0417\u0430\u0432\u0435\u0440\u0448\u0438\u0442\u044C")));
+  }
 };
 /* harmony default export */ var app = (app_App);
 // CONCATENATED MODULE: ./style/pure.css
 // extracted by mini-css-extract-plugin
 
+// CONCATENATED MODULE: ./style/styles.css
+// extracted by mini-css-extract-plugin
+
 // CONCATENATED MODULE: ./index.ts
+
 
 
 /* harmony default export */ var index = __webpack_exports__["default"] = (app);
