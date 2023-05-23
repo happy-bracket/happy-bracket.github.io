@@ -865,18 +865,18 @@ function useSignalEffect(n) {
 
 // CONCATENATED MODULE: ./model/questionnaire.ts
 var idCounter = 0;
-function SingleLineQuestionData(title, responses) {
+function SingleLineQuestionData(id, title, responses) {
   return {
     kind: 'singleLine',
-    id: ++idCounter,
+    id: id,
     title: title,
     responses: responses
   };
 }
-function MultiLineQuestionData(title, questions, responses) {
+function MultiLineQuestionData(id, title, questions, responses) {
   return {
     kind: 'multiLine',
-    id: ++idCounter,
+    id: id,
     title: title,
     questions: questions,
     responses: responses
@@ -884,17 +884,23 @@ function MultiLineQuestionData(title, questions, responses) {
 }
 var QuestionnaireData = [
 // Первый Блок
-SingleLineQuestionData("Хотите ли Вы перейти на другую работу, не связанную с педагогической деятельностью?", ["Да", "Нет", "Не знаю"]), SingleLineQuestionData("Нравится ли Вам Ваша профессия?", ["Профессия очень нравится", "Скорее нравится, чем не нравится", "Безразлична", "Скорее не нравится, чем нравится", "Совершенно не нравится", "Не могу сказать"]), SingleLineQuestionData("Избрали бы Вы вновь свою профессию?", ["Да", "Нет", "Не знаю"]),
+SingleLineQuestionData("job_change_desire", "Хотите ли Вы перейти на другую работу, не связанную с педагогической деятельностью?", ["Да", "Нет", "Не знаю"]), SingleLineQuestionData("profession_liking", "Нравится ли Вам Ваша профессия?", ["Профессия очень нравится", "Скорее нравится, чем не нравится", "Безразлична", "Скорее не нравится, чем нравится", "Совершенно не нравится", "Не могу сказать"]), SingleLineQuestionData("reentrance_inquiry", "Избрали бы Вы вновь свою профессию?", ["Да", "Нет", "Не знаю"]),
 // Конец Первого Блока
 // Второй Блок
-SingleLineQuestionData("Вы считаете, что Вам необходимо совершенствование профессионализма:", ["Постоянно, так как требования к уровню учителей все время повышаются, а достигнутые результаты открывают новые перспективы профессионального и личностного роста", "Считаете это напрасной тратой времени, так как опыт практической деятельности позволяет достигать Вам определенных результатов, которые Вас вполне устраивают", "Только когда этого требует администрация, чтобы не отставать от своих коллег"]), SingleLineQuestionData("Для Вас в профессиональной деятельности наиболее важно:", ["Достижение только высоких результатов", "Создание карьеры, движение по иерархической лестнице вверх", "Всестороннее развитие личности учащихся путем совершенствования Вашего профессионального мастерства", "Формальное выполнение всех предписаний и инструкций администрации и руководящих органов"]), MultiLineQuestionData("Прочитайте нижеперечисленные мотивы профессиональной деятельности и дайте оценку их значимости для Вас", ["Денежный заработок", "Стремление к продвижению по работе", "Стремление избежать критики со стороны руководителя или коллег", "Стремление избежать возможных наказаний и неприятностей", "Потребность в достижении социального престижа и уважения со стороны других", "Удовлетворение от самого процесса и результата работы", "Возможность наиболее полной самореализации именно в данной деятельности"], ["В очень незначительной степени", "В незначительной степени", "В небольшой, но и не в малой мере", "В большой мере", "В очень большой мере"]),
+SingleLineQuestionData("professionalism_improvement", "Вы считаете, что Вам необходимо совершенствование профессионализма:", ["Постоянно, так как требования к уровню учителей все время повышаются, а достигнутые результаты открывают новые перспективы профессионального и личностного роста", "Считаете это напрасной тратой времени, так как опыт практической деятельности позволяет достигать Вам определенных результатов, которые Вас вполне устраивают", "Только когда этого требует администрация, чтобы не отставать от своих коллег"]), SingleLineQuestionData("work_goals", "Для Вас в профессиональной деятельности наиболее важно:", ["Достижение только высоких результатов", "Создание карьеры, движение по иерархической лестнице вверх", "Всестороннее развитие личности учащихся путем совершенствования Вашего профессионального мастерства", "Формальное выполнение всех предписаний и инструкций администрации и руководящих органов"]), MultiLineQuestionData("work_motivation", "Прочитайте нижеперечисленные мотивы профессиональной деятельности и дайте оценку их значимости для Вас", ["Денежный заработок", "Стремление к продвижению по работе", "Стремление избежать критики со стороны руководителя или коллег", "Стремление избежать возможных наказаний и неприятностей", "Потребность в достижении социального престижа и уважения со стороны других", "Удовлетворение от самого процесса и результата работы", "Возможность наиболее полной самореализации именно в данной деятельности"], ["В очень незначительной степени", "В незначительной степени", "В небольшой, но и не в малой мере", "В большой мере", "В очень большой мере"]),
 // Конец Второго Блока
 // Третий Блок
 
 // Общая Удовлетворённость
-SingleLineQuestionData("В конце дня Вы обыкновенно", ["Недовольны собой", "Считаете, что день мог бы пройти и лучше", "Отходите ко сну с чувством удовлетворения"]), SingleLineQuestionData("Часто ли Вы испытываете ощущение счастья и радости?", ["Всегда", "Довольно часто", "Не понятен вопрос", "Иногда", "Почти никогда", "Не могу сказать"]), SingleLineQuestionData("Если бы была возможность начать жизнь сначала, многое бы Вы изменили в ней?", ["Да", "Нет", "Не знаю"]),
+SingleLineQuestionData("day_end_occupation", "В конце дня Вы обыкновенно", ["Недовольны собой", "Считаете, что день мог бы пройти и лучше", "Отходите ко сну с чувством удовлетворения"]), SingleLineQuestionData("happiness_frequence", "Часто ли Вы испытываете ощущение счастья и радости?", ["Всегда", "Довольно часто", "Не понятен вопрос", "Иногда", "Почти никогда", "Не могу сказать"]), SingleLineQuestionData("life_reentrance", "Если бы была возможность начать жизнь сначала, многое бы Вы изменили в ней?", ["Да", "Нет", "Не знаю"]),
 // Социальное Состояние
-SingleLineQuestionData("Вы считаете, что Ваши успехи и неудачи это:", ["Результат Ваших побед и ошибок и при желании всё в Ваших руках", "Везение или неприятное стечение обстоятельств и от Вас ничего, по большому счету не зависит"]), SingleLineQuestionData("Считаете ли Вы, что некоторые из Ваших идей принесли бы значительный прогресс в вашем учебном заведении, в педагогическом процессе?", ["Да", "Да, в некоторой степени", "Скорее нет"]), SingleLineQuestionData("К окружающим Вас людям Вы относитесь с позиции:", ["Среди людей нет места глупости, она Вас раздражает", "Каждый человек имеет право на свое мнение, даже если оно ошибочно", "Человеку свойственно ошибаться", "Если человек мне не интересен, я не желаю с ним общаться", "Если человек мне не понятен – он опасен"]), SingleLineQuestionData("Общение с коллегами:", ["Очень помогает Вам в работе", "Отвлекает Вас от работы", "Не имеет влияния на Вашу трудовую деятельность"]), SingleLineQuestionData("Стараетесь ли вы расширить ту область, в которой занимаетесь?", ["Да", "Нет", "Иногда"]), SingleLineQuestionData("Вы с удовольствием собираете материалы и новую информацию, касающуюся Вашей работы?", ["Да", "Нет", "Иногда"]), SingleLineQuestionData("Что Вы предпочитаете делать в свободное время?", ["Пассивный отдых перед телевизором", "Посещение театров, музеев, выставок", "Чтение научно-методической литературы", "Активный отдых", "Заниматься Вашим хобби"])];
+SingleLineQuestionData("who_to_blame", "Вы считаете, что Ваши успехи и неудачи это:", ["Результат Ваших побед и ошибок и при желании всё в Ваших руках", "Везение или неприятное стечение обстоятельств и от Вас ничего, по большому счету не зависит"]), SingleLineQuestionData("own_ideas_benefits", "Считаете ли Вы, что некоторые из Ваших идей принесли бы значительный прогресс в вашем учебном заведении, в педагогическом процессе?", ["Да", "Да, в некоторой степени", "Скорее нет"]), SingleLineQuestionData("people_around", "К окружающим Вас людям Вы относитесь с позиции:", ["Среди людей нет места глупости, она Вас раздражает", "Каждый человек имеет право на свое мнение, даже если оно ошибочно", "Человеку свойственно ошибаться", "Если человек мне не интересен, я не желаю с ним общаться", "Если человек мне не понятен – он опасен"]), SingleLineQuestionData("colleague_communication", "Общение с коллегами:", ["Очень помогает Вам в работе", "Отвлекает Вас от работы", "Не имеет влияния на Вашу трудовую деятельность"]), SingleLineQuestionData("field_enhancement", "Стараетесь ли вы расширить ту область, в которой занимаетесь?", ["Да", "Нет", "Иногда"]), SingleLineQuestionData("material_collection", "Вы с удовольствием собираете материалы и новую информацию, касающуюся Вашей работы?", ["Да", "Нет", "Иногда"]), SingleLineQuestionData("free_time", "Что Вы предпочитаете делать в свободное время?", ["Пассивный отдых перед телевизором", "Посещение театров, музеев, выставок", "Чтение научно-методической литературы", "Активный отдых", "Заниматься Вашим хобби"])];
+// CONCATENATED MODULE: ./model/latent_activity_relation.ts
+var latentActivityRelationTable = [[[6, 6, 6], [6, 6, 3], [3, 3, 3], [3, 4, 4], [6, 5, 4], [6, 3, 3]], [[1, 6, 2], [2, 3, 2], [3, 3, 3], [6, 6, 3], [6, 6, 6], [2, 6, 3]], [[2, 6, 2], [2, 3, 3], [3, 3, 3], [3, 4, 4], [6, 4, 4], [3, 3, 3]]];
+// CONCATENATED MODULE: ./model/self_realization_relation.ts
+var selfRealizationRelationTable = [[[2, 3, 3], [2, 3, 3], [1, 2, 2], [2, 3, 3]], [[3, 3, 4], [3, 3, 4], [2, 3, 3], [3, 3, 3]], [[2, 3, 3], [2, 3, 3], [1, 2, 3], [2, 3, 3]]];
+// CONCATENATED MODULE: ./model/general_satisfaction_relation.ts
+var generalSatisfactionRelationTable = [[[6, 6, 6], [6, 6, 3], [3, 3, 3], [4, 3, 4], [5, 6, 4], [4, 6, 3]], [[6, 2, 2], [3, 2, 3], [3, 3, 3], [4, 3, 4], [4, 6, 4], [3, 3, 3]], [[6, 1, 2], [3, 2, 2], [3, 3, 3], [6, 6, 3], [6, 6, 6], [6, 2, 3]]];
 // CONCATENATED MODULE: ./model/the-test-model.ts
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
@@ -902,6 +908,9 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+
+
+
 
 
 function Response(content) {
@@ -935,6 +944,7 @@ function State(questionnaire) {
     return [q.content.id, q];
   }));
   return {
+    kind: 'progress',
     questionnaire: qMap,
     showIncompleteError: false
   };
@@ -973,17 +983,86 @@ function dispatch(event) {
     case 'finish':
       {
         var _currentState2 = state.value;
-        console.log(_currentState2.questionnaire);
-        if (Object.values(_currentState2.questionnaire).every(function (q) {
+        var qv = Object.values(_currentState2.questionnaire);
+        if (qv.every(function (q) {
           return q.content.kind == 'singleLine' && q.choice != 'none' || q.content.kind == 'multiLine' && Object.values(q.choice).every(function (c) {
             return c != 'none';
           });
-        })) newState = 'finished';else newState = _objectSpread(_objectSpread({}, _currentState2), {}, {
+        })) {
+          var q = _currentState2.questionnaire;
+          newState = {
+            kind: 'finished',
+            latentActivityRelation: latentActivityRelationTable[q["job_change_desire"].choice][q["profession_liking"].choice][q["reentrance_inquiry"].choice],
+            selfRealizationRelation: selfRealizationRelationTable[q["professionalism_improvement"].choice][q["work_goals"].choice][calculateMotivationalComplex(q["work_motivation"])],
+            psychologicalStateRelation: generalSatisfactionRelationTable[q["day_end_occupation"].choice][q["happiness_frequence"].choice][q["life_reentrance"].choice],
+            responsibility: calculateResponsibility(q["who_to_blame"].choice, q["own_ideas_benefits"].choice),
+            tolerance: calculateTolerance(q["people_around"].choice, q["colleague_communication"].choice)
+          };
+        } else newState = _objectSpread(_objectSpread({}, _currentState2), {}, {
           showIncompleteError: true
         });
       }
   }
   state.value = newState;
+}
+function calculateMotivationalComplex(q) {
+  var c = q.choice;
+  var vm = (c[5] + c[6]) / 2.0;
+  var vpm = (c[0] + c[1] + c[4]) / 3.0;
+  var vom = (c[2] + c[3]) / 2.0;
+  if (vm >= vpm && vpm > vom) {
+    return 0;
+  } else if (vm < vpm && vpm < vom) {
+    return 2;
+  } else return 1;
+}
+function calculateResponsibility(q1, q2) {
+  function map(q) {
+    switch (q) {
+      case 0:
+        return 10;
+      case 1:
+        return 1;
+      case 2:
+        return 5;
+    }
+  }
+  var r = map(q1) + map(q2);
+  if (r == 20) return 0;
+  if (r >= 10) return 1;
+  return 2;
+}
+function calculateTolerance(q3, q4) {
+  var v3;
+  switch (q3) {
+    case 1:
+    case 2:
+      v3 = 10;
+      break;
+    case 0:
+    case 4:
+      v3 = 1;
+      break;
+    case 3:
+      v3 = 5;
+      break;
+  }
+  var v4;
+  switch (q4) {
+    case 0:
+      v4 = 10;
+      break;
+    case 1:
+      v4 = 1;
+      break;
+    case 2:
+      v4 = 5;
+      break;
+  }
+  var r = v3 + v4;
+  if (r == 20) return 0;
+  if (r >= 10) return 1;
+  return 2;
 }
 // CONCATENATED MODULE: ./components/app.tsx
 
@@ -1034,10 +1113,38 @@ function QuestionView(question) {
       }
   }
 }
+function latentActivity(value) {
+  switch (value) {
+    case 1:
+      return "Явно удовлетворён";
+    case 2:
+      return "Скорее удовлетворён, чем не удовлетворён";
+    case 3:
+      return "Неопределенное отношение";
+    case 4:
+      return "Скорее не удовлетворен, чем удовлетворен";
+    case 5:
+      return "Явно не удовлетворен";
+    case 6:
+      return "Противоречивое отношение";
+  }
+}
+function selfRealization(value) {
+  switch (value) {
+    case 1:
+      return "Высокопродуктивная самореализация";
+    case 2:
+      return "Среднепродуктивная самореализация";
+    case 3:
+      return "Малопродуктивная самореализация";
+    case 4:
+      return "Непродуктивная самореализация";
+  }
+}
 var app_App = function App() {
   var currentState = state.value;
-  if (currentState == 'finished') {
-    return Object(external_preact_["h"])("h1", null, "\u0421\u043F\u0430\u0441\u0438\u0431\u043E \u0437\u0430 \u0443\u0447\u0430\u0441\u0442\u0438\u0435!");
+  if (currentState.kind == 'finished') {
+    return Object(external_preact_["h"])("div", null, Object(external_preact_["h"])("h1", null, "\u0421\u043F\u0430\u0441\u0438\u0431\u043E \u0437\u0430 \u0443\u0447\u0430\u0441\u0442\u0438\u0435!"), Object(external_preact_["h"])("p", null, "\u041E\u0442\u043D\u043E\u0448\u0435\u043D\u0438\u0435 \u043A \u0440\u0430\u0431\u043E\u0442\u0435: ", latentActivity(currentState.latentActivityRelation)), Object(external_preact_["h"])("p", null, "\u0421\u0430\u043C\u043E\u0440\u0435\u0430\u043B\u0438\u0437\u0430\u0446\u0438\u044F: ", selfRealization(currentState.selfRealizationRelation)));
   } else {
     var questionViews = Object.values(currentState.questionnaire).map(QuestionView);
     var errorView;
