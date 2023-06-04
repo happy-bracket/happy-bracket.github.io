@@ -1126,7 +1126,11 @@ function MultiLineQuestionView(question) {
       role: "group"
     }, options));
   });
-  return Object(external_preact_["h"])("div", null, Object(external_preact_["h"])("h2", null, question.content.title), questions2);
+  return Object(external_preact_["h"])("div", {
+    class: "card"
+  }, Object(external_preact_["h"])("h2", {
+    class: "question-title"
+  }, question.content.title), questions2);
 }
 function QuestionView(question) {
   switch (question.content.kind) {
@@ -1142,7 +1146,11 @@ function QuestionView(question) {
             });
           }, q.content.forceHorizontal);
         });
-        return Object(external_preact_["h"])("div", null, Object(external_preact_["h"])("h2", null, question.content.title), Object(external_preact_["h"])("div", null, responseViews));
+        return Object(external_preact_["h"])("div", {
+          class: "card"
+        }, Object(external_preact_["h"])("h2", {
+          class: "question-title"
+        }, question.content.title), Object(external_preact_["h"])("div", null, responseViews));
       }
     case "multiLine":
       {
@@ -1180,36 +1188,6 @@ function selfRealization(value) {
       return "Непродуктивная самореализация";
   }
 }
-function psychologicalState(value) {
-  switch (value) {
-    case 1:
-      return "Явно удовлетворён";
-    case 2:
-      return "Скорее удовлетворён, чем не удовлетворён";
-    case 3:
-      return "Неопределённое отношение";
-    case 4:
-      return "Скорее не удовлетворён, чем удовлетворён";
-    case 5:
-      return "Явно не удовлетворён";
-    case 6:
-      return "Противоречивое отношение";
-  }
-}
-function socialState(value) {
-  switch (value) {
-    case 1:
-      return "Высокий уровень";
-    case 2:
-      return "Уровень выше среднего";
-    case 3:
-      return "Средний уровень";
-    case 4:
-      return "Уровень ниже среднего";
-    case 5:
-      return "Низкий уровень";
-  }
-}
 function selfRealizationScale(value) {
   if (typeof value == 'number') {
     return value.toString();
@@ -1220,11 +1198,14 @@ function selfRealizationScale(value) {
 var app_App = function App() {
   var currentState = state.value;
   if (currentState.kind == 'finished') {
-    return Object(external_preact_["h"])("div", null, Object(external_preact_["h"])("h1", null, "\u0421\u043F\u0430\u0441\u0438\u0431\u043E \u0437\u0430 \u0443\u0447\u0430\u0441\u0442\u0438\u0435!"), Object(external_preact_["h"])("p", null, "\u041E\u0442\u043D\u043E\u0448\u0435\u043D\u0438\u0435 \u043A \u0440\u0430\u0431\u043E\u0442\u0435: ", latentActivity(currentState.latentActivityRelation)), Object(external_preact_["h"])("p", null, "\u0421\u0430\u043C\u043E\u0440\u0435\u0430\u043B\u0438\u0437\u0430\u0446\u0438\u044F: ", selfRealization(currentState.selfRealizationRelation)), Object(external_preact_["h"])("p", null, "\u0426\u0435\u043D\u0430 \u0441\u0430\u043C\u043E\u0440\u0435\u0430\u043B\u0438\u0437\u0430\u0446\u0438\u0438: ", selfRealizationScale(currentState.selfRealizationScaleRelation)));
+    return Object(external_preact_["h"])("div", {
+      class: "card"
+    }, Object(external_preact_["h"])("h1", null, "\u0421\u043F\u0430\u0441\u0438\u0431\u043E \u0437\u0430 \u0443\u0447\u0430\u0441\u0442\u0438\u0435!"), Object(external_preact_["h"])("p", null, "\u041E\u0442\u043D\u043E\u0448\u0435\u043D\u0438\u0435 \u043A \u0440\u0430\u0431\u043E\u0442\u0435: ", latentActivity(currentState.latentActivityRelation)), Object(external_preact_["h"])("p", null, "\u0421\u0430\u043C\u043E\u0440\u0435\u0430\u043B\u0438\u0437\u0430\u0446\u0438\u044F: ", selfRealization(currentState.selfRealizationRelation)), Object(external_preact_["h"])("p", null, "\u0426\u0435\u043D\u0430 \u0441\u0430\u043C\u043E\u0440\u0435\u0430\u043B\u0438\u0437\u0430\u0446\u0438\u0438: ", selfRealizationScale(currentState.selfRealizationScaleRelation)));
   } else {
     var questionViews = Object.values(currentState.questionnaire).map(QuestionView);
-    var errorView;
-    return Object(external_preact_["h"])(external_preact_["Fragment"], null, Object(external_preact_["h"])("div", null, questionViews), Object(external_preact_["h"])("div", null, currentState.showIncompleteError && Object(external_preact_["h"])("h4", {
+    return Object(external_preact_["h"])(external_preact_["Fragment"], null, Object(external_preact_["h"])("h1", {
+      class: "header card"
+    }, "\u041C\u0435\u0442\u043E\u0434\u0438\u043A\u0430 \u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u0438\u044F \u0442\u0438\u043F\u0430 \u043F\u0440\u043E\u0444\u0435\u0441\u0441\u0438\u043E\u043D\u0430\u043B\u044C\u043D\u043E\u0439 \u0441\u0430\u043C\u043E\u0440\u0435\u0430\u043B\u0438\u0437\u0430\u0446\u0438\u0438 \u043B\u0438\u0447\u043D\u043E\u0441\u0442\u0438 (\u0421.\u0418.\u0424\u0438\u043B\u0438\u043C\u043E\u043D\u043E\u0432\u0430)"), Object(external_preact_["h"])("div", null, questionViews), Object(external_preact_["h"])("div", null, currentState.showIncompleteError && Object(external_preact_["h"])("h4", {
       class: "incomplete-error"
     }, "\u041F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430, \u043E\u0442\u0432\u0435\u0442\u044C\u0442\u0435 \u043D\u0430 \u0432\u0441\u0435 \u0432\u043E\u043F\u0440\u043E\u0441\u044B."), Object(external_preact_["h"])("button", {
       class: "button-xlarge pure-button button-success button-finish",
