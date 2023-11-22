@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Egor Trutenko</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="index.js"></script>
+</head>
+
+<body>
+    <div id="modal" class="modal" onclick="closeModal()"></div>
+    <div class="intro">
+        <img src="assets/intro.jpg" class="intro-image">
+        <div class="intro-text">
+            <div>
+                <h1>Hi! My name is Egor. I am a software developer.</h1>
+                <p>I hope you're not watching this in Mozilla, because I haven't tested it.</p>
+                <p>Professionally, I have been developing Android apps for over 5 years. <br>
+                    I am most proficient in Kotlin and Java, interested in functional languages like Haskell and Scala
+                    and making strides in learning C# and C++. <br>
+                    As a hobby, I am developing games, dabbing in 3D modeling and visualization and participate in
+                    cinematography projects. <br>
+                    23 yo.<br><br>
+                    Infinite Castle Devlog: <a href="https://t.me/bracket_devlog">https://t.me/bracket_devlog</a>
+                </p>
+            </div>
+            <div class="contact-info">
+                <a href="mailto:georgwarden@gmail.com">
+                    <img src="https://cdn-icons-png.flaticon.com/512/666/666162.png">
+                </a>
+                <a href="https://github.com/happy-bracket">
+                    <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png">
+                </a>
+                <a href="https://t.me/happy_bracket">
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/2048px-Telegram_logo.svg.png">
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="divider"></div>
+    <div class="info-title">
+        <h1>Gallery</h1>
+    </div>
+    <div class="info-block">
+        <div class="info-divider"></div>
+        <h1 class="info-subheader">Infinite Castle WIPs</h1>
+        <div class="info-divider"></div>
+        <p class="info-hint">
+            Some modeling that I've done for the game I'm making.
+        </p>
+        <div class="info-content">
+            <img class="gallery-item" src="assets/ic_rg.png" onclick="openModal(this)">
+            <img class="gallery-item" src="assets/ic_rev.png" onclick="openModal(this)">
+            <img class="gallery-item" src="assets/ic_sting.png" onclick="openModal(this)">
+        </div>
+        <div class="info-divider"></div>
+        <h1 class="info-subheader">Visualization</h1>
+        <div class="info-divider"></div>
+        <p class="info-hint">
+            Visualization I've done in Blender for an interior designer. <br>
+            Had to redo most of geometry because it got messed up on export from 3dsmax. <br>
+            Most of materials are public, some I've created with shading nodes. Lighting was the true pain.
+        </p>
+        <div class="info-content">
+            <img class="gallery-item" src="assets/vis1.jpg" onclick="openModal(this)">
+            <img class="gallery-item" src="assets/vis2.jpg" onclick="openModal(this)">
+            <img class="gallery-item" src="assets/vis3.jpg" onclick="openModal(this)">
+            <img class="gallery-item" src="assets/vis4.jpg" onclick="openModal(this)">
+            <img class="gallery-item" src="assets/vis5.jpg" onclick="openModal(this)">
+            <img class="gallery-item" src="assets/vis6.jpg" onclick="openModal(this)">
+            <img class="gallery-item" src="assets/vis7.jpg" onclick="openModal(this)">
+            <img class="gallery-item" src="assets/vis8.jpg" onclick="openModal(this)">
+        </div>
+        <div class="info-divider"></div>
+        <h1 class="info-subheader">VK Hokkey Team Token</h1>
+        <div class="info-divider"></div>
+        <p class="info-hint">
+            A coin with a team logo for VK corporate hokkey team. Also has animations, but I won't show them here
+            because I don't know how to insert videos in HTML page.
+        </p>
+        <div class="info-content">
+            <img class="gallery-item" src="assets/vk1.png" onclick="openModal(this)">
+            <img class="gallery-item" src="assets/tpl.png" onclick="openModal(this)">
+            <img class="gallery-item" src="assets/vk2.png" onclick="openModal(this)">
+            <img class="gallery-item" src="assets/vk3.png" onclick="openModal(this)">
+        </div>
+    </div>
+</body>
+
+</html>
